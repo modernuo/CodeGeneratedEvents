@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGeneratedEvents", "CodeGeneratedEvents\CodeGeneratedEvents.csproj", "{1BBCE866-955F-451E-8063-004E5D49AE09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGeneratedEvents.Annotations", "CodeGeneratedEvents.Annotations\CodeGeneratedEvents.Annotations.csproj", "{233F77CF-B863-479C-A408-A4937C32B068}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGeneratedEvents.Tests", "CodeGeneratedEvents.Tests\CodeGeneratedEvents.Tests.csproj", "{01B00999-546B-4E7D-BE90-DE7F1B299EFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1BBCE866-955F-451E-8063-004E5D49AE09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BBCE866-955F-451E-8063-004E5D49AE09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BBCE866-955F-451E-8063-004E5D49AE09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BBCE866-955F-451E-8063-004E5D49AE09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{233F77CF-B863-479C-A408-A4937C32B068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{233F77CF-B863-479C-A408-A4937C32B068}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{233F77CF-B863-479C-A408-A4937C32B068}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{233F77CF-B863-479C-A408-A4937C32B068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01B00999-546B-4E7D-BE90-DE7F1B299EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01B00999-546B-4E7D-BE90-DE7F1B299EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01B00999-546B-4E7D-BE90-DE7F1B299EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01B00999-546B-4E7D-BE90-DE7F1B299EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
