@@ -45,7 +45,7 @@ public class GeneratedEventSourceGeneratorTests
                     }
                 }
 
-            """.Replace("\n", Environment.NewLine).TrimStart();
+            """.ReplaceLineEndings().TrimStart();
 
         var source2 =
             """
@@ -60,7 +60,7 @@ public class GeneratedEventSourceGeneratorTests
                     public static partial void MyEvent(string arg1, string arg2);
                 }
 
-            """.Replace("\n", Environment.NewLine).TrimStart();
+            """.ReplaceLineEndings().TrimStart();
 
         var expectedGeneratedCode =
             $$"""
@@ -84,7 +84,7 @@ public class GeneratedEventSourceGeneratorTests
                 }
             }
 
-            """.Replace("\n", Environment.NewLine).TrimStart();
+            """.ReplaceLineEndings().TrimStart();
 
         // Act
         var generatedCode = await GetGeneratedOutputAsync(generator, source1, source2);

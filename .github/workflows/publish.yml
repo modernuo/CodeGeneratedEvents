@@ -1,0 +1,50 @@
+name: Publish to NuGet
+
+# Trusted publishing: nuget.org trusts this repo + this workflow file (+ the "nuget" environment)
+# and exchanges the job's GitHub OIDC token for a short-lived API key. No long-lived key is stored.
+# Renaming this file or the environment breaks the nuget.org policy until it is updated to match.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: nuget
+    permissions:
+      contents: read
+      id-token: write
+
+    env:
+      PACKAGE_DIR: ${{ github.workspace }}/packages
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '11.0.x'
+
+      # GeneratePackageOnBuild=true makes pack skip its build, packing an empty bin/ on a clean runner.
+      # Pack before logging in: the temporary key expires after an hour.
+      - name: Pack
+        run: |
+          dotnet pack CodeGeneratedEvents.Annotations/CodeGeneratedEvents.Annotations.csproj -c Release -p:GeneratePackageOnBuild=false -o "$PACKAGE_DIR"
+          dotnet pack CodeGeneratedEvents/CodeGeneratedEvents.csproj -c Release -p:GeneratePackageOnBuild=false -o "$PACKAGE_DIR"
+
+      - name: NuGet login (OIDC)
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: Push
+        run: >
+          dotnet nuget push "$PACKAGE_DIR/*.nupkg"
+          --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
+          --source https://api.nuget.org/v3/index.json
+          --skip-duplicate
